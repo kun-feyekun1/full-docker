@@ -1,0 +1,22 @@
+
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Environment
+.env
+
+# Logs
+logs
+*.log
+log-*.log
+
+# Database / local data
+*.db
+mongo-data/
+data/
+dump/

@@ -1,0 +1,32 @@
+
+node_modules
+
+# Logs
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+logs
+*.log
+
+.env
+.env.* 
+
+.git
+.gitignore
+
+Dockerfile
+docker-compose.yml
+
+.DS_Store
+Thumbs.db
+*.swp
+
+# Build / temp artifacts
+dist
+build
+coverage
+tmp
+.cache
+
+uploads
+public/uploads

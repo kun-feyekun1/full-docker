@@ -1,0 +1,40 @@
+
+node_modules
+
+# Build artifacts (Docker handles them, do not send them to build context)
+dist
+build
+
+.env
+.env.*
+*.local
+
+# Logs
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+*.log
+logs
+
+.git
+.gitignore
+
+Dockerfile
+docker-compose.yml
+
+# Editor junk
+Thumbs.db
+
+# Cache & temporary files
+.cache
+.tmp
+tmp
+.vscode
+.idea
+
+# Storybook build
+storybook-static
+
+# User uploads 
+public/uploads
+uploads

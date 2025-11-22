@@ -1,6 +1,4 @@
 
-# docker-compose.yml
-
 services:
   # MongoDB
   mongodb:
@@ -49,6 +47,7 @@ services:
       - mongodb
       - redis
       - postgres
+    command: sh -c "node seeders/runSeeders.js && npm start"
 
   # Frontend
   frontend:
@@ -61,7 +60,6 @@ services:
 volumes:
   mongo_data:
   pgdata:
-  
 
 
 
@@ -80,3 +78,42 @@ volumes:
 
 # git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 # git rm --cached .env
+
+
+# docker-compose build seed
+# docker-compose run seed
+
+# docker exec -it agrimon_postgres bash
+
+
+
+# C:\Users\YOGA\Desktop\full-docker>docker exec -it agrimon_postgres bash
+# docker exec -it agrimon_postgres psql -U postgres
+
+# root@496da0dbd8a3:/# psql -U postgres
+# psql (16.11 (Debian 16.11-1.pgdg13+1))
+# Type "help" for help.
+
+# postgres=# \c APIDB
+# You are now connected to database "APIDB" as user "postgres".
+# APIDB=# \dt
+# Did not find any relations.
+# APIDB=#
+
+
+
+# -- Terminate all connections to APIDB
+# SELECT pg_terminate_backend(pid) 
+# FROM pg_stat_activity 
+# WHERE datname = 'APIDB';
+
+# -- Drop and recreate
+# DROP DATABASE IF EXISTS "APIDB";
+# CREATE DATABASE "APIDB";
+# \q
+
+
+# docker-compose exec backend npx sequelize-cli db:migrate
+# docker exec -it <backend-container> node seeders/runSeeders.js
+# docker exec -it agrimon_backend node seeders/runSeeders.js
+

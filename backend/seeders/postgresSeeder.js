@@ -1,7 +1,7 @@
 'use strict';
 
 const { Sequelize, DataTypes } = require('sequelize');
-const faker = require('faker'); // npm install faker
+const { faker } = require('@faker-js/faker');
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 
@@ -12,9 +12,9 @@ const sequelize = new Sequelize(process.env.DB_URL, {
 });
 
 // Import Models
-const UserModel = require('./models/User')(sequelize, DataTypes);
-const ProductModel = require('./models/Product')(sequelize, DataTypes);
-const OrderModel = require('./models/Order')(sequelize, DataTypes);
+const UserModel = require('../models/User')(sequelize, DataTypes);
+const ProductModel = require('../models/Product')(sequelize, DataTypes);
+const OrderModel = require('../models/Order')(sequelize, DataTypes);
 
 // Associations
 UserModel.hasMany(OrderModel, { foreignKey: 'userId' });
@@ -37,11 +37,11 @@ async function generateUsers(num = 50) {
   for (let i = 0; i < num; i++) {
     const password = await hashPassword('password123');
     users.push({
-      name: faker.name.fullName(),
+      name: faker.person.fullName(),
       email: faker.internet.email(),
       password,
       phone: faker.phone.number('09########'),
-      location: faker.address.city(),
+      location: faker.location.city(),
       role: faker.helpers.arrayElement(['user', 'admin']),
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -60,7 +60,7 @@ function generateProducts(num = 50) {
       price: faker.commerce.price(5, 500, 2),
       category: faker.commerce.department(),
       unit: faker.helpers.arrayElement(['kg', 'pcs', 'liter']),
-      location: faker.address.city(),
+      location: faker.location.city(),
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -73,13 +73,13 @@ function generateOrders(users, products, num = 100) {
   const orders = [];
   for (let i = 0; i < num; i++) {
     const user = faker.helpers.arrayElement(users);
-    const productCount = faker.datatype.number({ min: 1, max: 5 });
+    const productCount = faker.number.int({ min: 1, max: 5 });
     const orderedProducts = faker.helpers.arrayElements(products, productCount);
 
     const productDetails = orderedProducts.map(p => ({
       id: p.id || null,
       name: p.name,
-      quantity: faker.datatype.number({ min: 1, max: 10 }),
+      quantity: faker.number.int({ min: 1, max: 10 }),
       price: p.price,
     }));
 
@@ -89,7 +89,7 @@ function generateOrders(users, products, num = 100) {
       userId: user.id || null,
       productDetails: JSON.stringify(productDetails),
       totalAmount,
-      deliveryAddress: faker.address.streetAddress(),
+      deliveryAddress: faker.location.streetAddress(),
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -97,7 +97,7 @@ function generateOrders(users, products, num = 100) {
   return orders;
 }
 
-async function seed() {
+async function seedPostgres() {
   try {
     // Sync tables (drops and recreates)
     await sequelize.sync({ force: true });
@@ -114,7 +114,7 @@ async function seed() {
     console.log('Products seeded');
 
     // Seed Orders
-    const ordersData = generateOrders(createdUsers, createdProducts, 100);
+    const ordersData = generateOrders(createdUsers, createdProducts, 50);
     await Order.bulkCreate(ordersData);
     console.log('Orders seeded');
 
@@ -126,4 +126,4 @@ async function seed() {
   }
 }
 
-seed();
+module.exports = seedPostgres;

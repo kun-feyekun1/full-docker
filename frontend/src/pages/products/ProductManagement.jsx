@@ -47,8 +47,8 @@ const ProductManagement = () => {
       setLoading(true);
       const resp = await productService.getProducts(page, limit);
 
-      setProducts(resp.data);
-      setPagination(resp.pagination);
+     setProducts(resp.data);
+    setPagination(resp.pagination);
     } catch (error) {
       showMessage("error", error.message || "Failed to fetch products");
     } finally {
@@ -259,19 +259,16 @@ const ProductManagement = () => {
             </div>
 
             <div className="flex justify-between items-center mb-8 flex-wrap gap-4">
-  <div className="flex gap-4 items-center flex-wrap">
-    ...
-  </div>
-  <div className="flex gap-4">
-    <button
-      onClick={() => setActiveTab("create")}
-      className="bg-linear-to-br from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold transition-all hover:-translate-y-1 hover:shadow-lg"
-    >
-      Create Product
-    </button>
-  </div>
-</div>
-
+              <div className="flex gap-4 items-center flex-wrap">...</div>
+              <div className="flex gap-4">
+                <button
+                  onClick={() => setActiveTab("create")}
+                  className="bg-linear-to-br from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold transition-all hover:-translate-y-1 hover:shadow-lg"
+                >
+                  Create Product
+                </button>
+              </div>
+            </div>
 
             {loading ? (
               <div className="text-center py-8 text-gray-500 italic">

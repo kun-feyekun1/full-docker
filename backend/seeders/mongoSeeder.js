@@ -1,18 +1,9 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const faker = require('faker'); // npm install faker
-require('dotenv').config();
+const connectToMongoDB = require('../config/mong');
+const { faker } = require('@faker-js/faker');
 
-const Notification = require('./models/Notification'); // adjust path if needed
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log('MongoDB connected successfully'))
-  .catch(err => console.error('MongoDB connection error:', err));
+const Notification = require('../mongoModels/Notification');
 
 async function generateNotifications(num = 50) {
   const notifications = [];
@@ -21,7 +12,7 @@ async function generateNotifications(num = 50) {
     notifications.push({
       title: faker.lorem.sentence(),
       message: faker.lorem.paragraph(),
-      userId: faker.datatype.uuid(), // random userId; optional
+      userId: faker.string.uuid(),
       type: faker.helpers.arrayElement(['general', 'order', 'alert']),
       emailSent: faker.datatype.boolean(),
     });
@@ -30,9 +21,10 @@ async function generateNotifications(num = 50) {
   return notifications;
 }
 
-async function seed() {
+async function mongoSeeder() {
   try {
-    // Optional: clear previous notifications
+    await connectToMongoDB();
+
     await Notification.deleteMany({});
     console.log('Old notifications cleared');
 
@@ -43,11 +35,10 @@ async function seed() {
     await Notification.insertMany(notifications);
     console.log('Notifications seeded successfully');
 
-    process.exit(0);
   } catch (err) {
     console.error('Seeding failed:', err);
     process.exit(1);
   }
 }
 
-seed();
+module.exports = mongoSeeder;

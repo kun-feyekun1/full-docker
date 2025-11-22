@@ -12,6 +12,7 @@
   "author": "Mohammed Hassen",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^10.1.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",

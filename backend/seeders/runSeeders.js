@@ -1,33 +1,19 @@
-'use strict';
 
-const sequelizeSeeder = require('./postgresSeeder'); // your combined Postgres seeder
-const mongoSeeder = require('./mongoSeeder');        // the MongoDB seeder
-const db = require('../models');                     // your Sequelize models
+
+const sequelizeSeeder = require('./postgresSeeder');
+const mongoSeeder = require('./mongoSeeder');
+const db = require('../models');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
 async function runSeeders() {
   try {
-    // ----------------------------
-    // Connect to MongoDB
-    // ----------------------------
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('MongoDB connected');
 
-    // ----------------------------
-    // Run MongoDB seeder
-    // ----------------------------
+    await mongoose.connect(process.env.MONGO_URL);
+    console.log('Mongo connected');
+
     await mongoSeeder();
-    console.log('MongoDB seeder finished');
-
-    // ----------------------------
-    // Connect to Postgres and run Sequelize seeder
-    // ----------------------------
-    await db.sequelize.sync({ force: true }); // drops and recreates tables
-    console.log('Postgres synced');
+    console.log('Mongo seeder finished');
 
     await sequelizeSeeder();
     console.log('Postgres seeder finished');

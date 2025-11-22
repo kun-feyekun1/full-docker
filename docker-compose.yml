@@ -49,14 +49,18 @@ services:
       - mongodb
       - redis
       - postgres
-      
+    command: >
+      sh -c "./wait-for-it.sh postgres:5432 -- 
+      ./wait-for-it.sh mongo:27017 -- 
+      node seeder/runSeeders.js && node server.js"
+
   # Frontend
   frontend:
     build: ./frontend
     container_name: agrimon_frontend
     restart: unless-stopped
     ports:
-      - "5173:5173"
+      - "5173:80"
 
 volumes:
   mongo_data:

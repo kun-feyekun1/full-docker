@@ -117,3 +117,7 @@ volumes:
 # docker exec -it <backend-container> node seeders/runSeeders.js
 # docker exec -it agrimon_backend node seeders/runSeeders.js
 
+
+# docker-compose restart frontend
+
+

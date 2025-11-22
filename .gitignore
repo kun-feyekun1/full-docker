@@ -1,6 +1,9 @@
 
 node_modules/
 
+# environment vars
+.env
+
 # Build output
 dist/
 build/

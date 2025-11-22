@@ -49,11 +49,7 @@ services:
       - mongodb
       - redis
       - postgres
-    command: >
-      sh -c "./wait-for-it.sh postgres:5432 -- 
-      ./wait-for-it.sh mongo:27017 -- 
-      node seeder/runSeeders.js && node server.js"
-
+      
   # Frontend
   frontend:
     build: ./frontend

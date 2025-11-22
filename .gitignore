@@ -1,8 +1,6 @@
 
 node_modules/
-.env
 
-# environment vars
 .env
 
 # Build output

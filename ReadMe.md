@@ -1,11 +1,11 @@
 # AgriConnect - Agricultural Market Linkage Platform
 
-A comprehensive web-based platform connecting Ethiopian smallholder farmers with buyers.
+A comprehensive web-based platform connecting helps in tracking the sellers orders and products
 
 ## Technology Stack
 
 ### Frontend
-- React.js with Hooks & Context API
+- React.js with Hooks 
 - TailwindCSS for styling
 - Framer Motion & React Spring for animations
 - GSAP for advanced animations
@@ -18,7 +18,6 @@ A comprehensive web-based platform connecting Ethiopian smallholder farmers with
 - PostgreSQL with Sequelize ORM
 - MongoDB with Mongoose ODM
 - Redis for caching
-- Multer for file uploads
 - Nodemailer for emails
 
 ## Setup Instructions

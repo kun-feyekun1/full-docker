@@ -23,6 +23,11 @@ A comprehensive web-based platform connecting Ethiopian smallholder farmers with
 
 ## Setup Instructions
 
-1. Install dependencies:
-```bash
-npm run install:all
+1. git clone 
+2. copy the 3 .env.example to .env
+3. put your credentials
+4. docker compose up --build
+
+It should automatically seed the mongo and postgre dbs
+
+Open in browser 

@@ -128,14 +128,13 @@ const UserManagement = () => {
   };
 
   const handleLogout = () => {
-  if (window.confirm("Are you sure you want to logout?")) {
-    // Clear auth token or user data
-    localStorage.removeItem("token"); // adjust if you store elsewhere
-    // Redirect to login page
-    window.location.href = "/Auths";
-  }
-};
-
+    if (window.confirm("Are you sure you want to logout?")) {
+      // Clear auth token or user data
+      localStorage.removeItem("token"); // adjust if you store elsewhere
+      // Redirect to login page
+      window.location.href = "/Auths";
+    }
+  };
 
   const deleteUser = async (id) => {
     if (
@@ -671,24 +670,23 @@ const UserManagement = () => {
                       </p>
                     </div>
 
-              <div className="pt-4 flex gap-4">
-  <button
-    type="submit"
-    disabled={loading}
-    className="flex-1 px-4 py-2 bg-linear-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
-  >
-    {loading ? "Updating..." : "Update Profile"}
-  </button>
+                    <div className="pt-4 flex gap-4">
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="flex-1 px-4 py-2 bg-linear-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md hover:shadow-lg"
+                      >
+                        {loading ? "Updating..." : "Update Profile"}
+                      </button>
 
-  <button
-    type="button"
-    onClick={handleLogout}
-    className="flex-1 px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-md"
-  >
-    Logout
-  </button>
-</div>
-
+                      <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="flex-1 px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-md"
+                      >
+                        Logout
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>

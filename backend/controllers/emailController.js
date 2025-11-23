@@ -1,44 +1,4 @@
 
-// "use strict";
-
-// const { sendNoticeEmailsForAll } = require("../services/emailService");
-
-// const sendNoticeToAllController = async (req, res) => {
-//   try {
-//     const userId = req.body?.userId || null;
-
-//     const result = await sendNoticeEmailsForAll({ userId });
-
-//     if (result?.success === false) {
-//       return res.status(500).json({
-//         success: false,
-//         message: "Email sending failed",
-//         error: result.error,
-//       });
-//     }
-
-//     res.status(200).json({
-//       success: true,
-//       message: "Notice emails sent successfully",
-//       details: result,
-//     });
-
-//   } catch (err) {
-//     console.error("Controller Error:", err);
-
-//     res.status(500).json({
-//       success: false,
-//       message: "Server error in email controller",
-//       error: err.message,
-//     });
-//   }
-// };
-
-// module.exports = { sendNoticeToAllController };
-
-
-
-
 'use strict';
 
 const EmailService = require('../services/emailService');

@@ -14,7 +14,7 @@ import UserManagement from "./pages/users/UserManagement";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import AboutUs from "./pages/About/AboutUs";
 import Features from "./pages/features/Features";
-import Auths from "./pages/Home/Auths";
+import Auths from "./pages/auth/Auths";
 import Footer from "./components/Footer";
 
 import Privacy from "./pages/policies/Privacy";

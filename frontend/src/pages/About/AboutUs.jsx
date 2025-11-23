@@ -11,8 +11,6 @@ import {
   Globe,
   HeartHandshake,
   ChevronRight,
-  Play,
-  Mail,
   ArrowRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +20,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AboutUs = () => {
   const [activeTab, setActiveTab] = useState("mission");
-  const [videoPlaying, setVideoPlaying] = useState(false);
   const sectionRef = useRef(null);
   const statsRef = useRef(null);
   const teamRef = useRef(null);
@@ -79,13 +76,6 @@ const AboutUs = () => {
       );
     }
   }, []);
-
-  const companyStats = [
-    { icon: Users, number: 10000, suffix: "+", label: "Happy Customers" },
-    { icon: Globe, number: 50, suffix: "+", label: "Countries Served" },
-    { icon: Award, number: 15, suffix: "", label: "Industry Awards" },
-    { icon: TrendingUp, number: 99, suffix: "%", label: "Client Satisfaction" },
-  ];
 
   const values = [
     {

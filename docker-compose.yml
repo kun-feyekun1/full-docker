@@ -124,3 +124,14 @@ volumes:
 # Try connecting directly to Docker Postgres
 # psql -h 127.0.0.1 -U postgres -d APIDB
 
+# netsh int ipv4 delete excludedportrange protocol=tcp startport=2928 numberofports=100
+# netsh int ipv4 show excludedportrange protocol=tcp
+# netsh int ipv4 add excludedportrange protocol=tcp startport=3000 numberofports=1
+# docker compose up --build
+
+# net stop winnat
+# net start winnat
+
+
+
+

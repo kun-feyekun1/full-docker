@@ -119,5 +119,8 @@ volumes:
 
 
 # docker-compose restart frontend
+# docker ps
 
+# Try connecting directly to Docker Postgres
+# psql -h 127.0.0.1 -U postgres -d APIDB
 

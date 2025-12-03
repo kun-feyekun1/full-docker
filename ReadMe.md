@@ -29,4 +29,7 @@ A comprehensive web-based platform connecting helps in tracking the sellers orde
 
 It should automatically seed the mongo and postgre dbs
 
+Then npm install to the frontend 
+then npm run dev
+
 Open in browser 

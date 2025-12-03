@@ -7,7 +7,7 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
 //config imports
-const corsOptions = require("./config/corsOptions");
+//const corsOptions = require("./config/corsOptions");
 
 //Import Routes
 const authRoutes = require("./routes/authRoutes");

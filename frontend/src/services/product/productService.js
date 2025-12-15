@@ -1,50 +1,94 @@
 
-import apiClient from "../api/apiClient";
-
 const productService = {
   getProducts: async (page = 1, limit = 8) => {
-    const response = await apiClient.get(`/products?page=${page}&limit=${limit}`);
-    return response.data;
+    try {
+      // Test with fetch first
+      const response = await fetch(`http://localhost/api/products?page=${page}&limit=${limit}`);
+      const data = await response.json();
+      console.log('Fetch test data:', data);
+      return data;
+    } catch (error) {
+      console.error('Fetch test error:', error);
+      throw error;
+    }
+  },
+ getProductById: async (id) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/products/${id}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      return { data };
+    } catch (error) {
+      console.error('Fetch product by ID error:', error);
+      throw error;
+    }
   },
 
-  getProductById: async (id) => {
-    const response = await apiClient.get(`/products/${id}`);
-    return response;
+  createProduct: async (productData) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/products/createProd`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData)
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      return { data };
+    } catch (error) {
+      console.error('Create product error:', error);
+      throw error;
+    }
   },
 
-  createProduct: async (data) => {
-    const response = await apiClient.post(`/products/createProd`, data);
-    return response;
-  },
-
-  updateProduct: async (id, data) => {
-    const response = await apiClient.put(`/products/updateProd/${id}`, data);
-    return response;
+  updateProduct: async (id, productData) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/products/updateProd/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(productData)
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      return { data };
+    } catch (error) {
+      console.error('Update product error:', error);
+      throw error;
+    }
   },
 
   deleteProduct: async (id) => {
-    const response = await apiClient.delete(`/products/${id}`);
-    return response;
+    try {
+      const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+        method: 'DELETE',
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : { message: 'Product deleted successfully' };
+      
+      return { data };
+    } catch (error) {
+      console.error('Delete product error:', error);
+      throw error;
+    }
   },
 };
 
 export default productService;
-
-
-// when i use this it worked omg, :
-// const productService = {
-//   getProducts: async (page = 1, limit = 8) => {
-//     try {
-//       // Test with fetch first
-//       const response = await fetch(`http://localhost/api/products?page=${page}&limit=${limit}`);
-//       const data = await response.json();
-//       console.log('Fetch test data:', data);
-//       return data;
-//     } catch (error) {
-//       console.error('Fetch test error:', error);
-//       throw error;
-//     }
-//   },
-//   // ... other methods
-// };
-// export default productService;

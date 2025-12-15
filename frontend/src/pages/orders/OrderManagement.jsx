@@ -32,7 +32,7 @@ const OrderManagement = () => {
         const products = await orderService.getProducts();
         setAvailableProducts(products);
       } catch (error) {
-        console.error("Failed to fetch products", error);
+        console.error("Failed to fetch productsdd", error);
       }
     };
     loadProducts();

@@ -179,7 +179,7 @@
 //       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
 //       product.description.toLowerCase().includes(searchTerm.toLowerCase());
 //     const matchesCategory =
-//       !categoryFilter || product.category === categoryFilter;
+//       !categoryFilter || product.category === categoryFilter
 //     return matchesSearch && matchesCategory;
 //   });
 
@@ -678,7 +678,7 @@ const ProductsManagement = () => {
       setProducts(resp.data);
       setPagination(resp.pagination);
     } catch (error) {
-      showMessage("error", error.message || "Failed to fetch products");
+      showMessage("error", error.message || "Failed to fetch productsdd");
     } finally {
       setLoading(false);
     }
@@ -691,12 +691,12 @@ const ProductsManagement = () => {
       
       setSelectedProduct(response.data);
       setProductForm({
-        name: response.data.name,
-        price: response.data.price,
-        description: response.data.description,
-        category: response.data.category,
-        unit: response.data.unit,
-        location: response.data.location,
+        name: response.name,
+        price: response.price,
+        description: response.description,
+        category: response.category,
+        unit: response.unit,
+        location: response.location,
       });
       
       setActiveTab("edit");

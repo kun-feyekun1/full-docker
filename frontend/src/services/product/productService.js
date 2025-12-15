@@ -29,3 +29,22 @@ const productService = {
 };
 
 export default productService;
+
+
+// when i use this it worked omg, :
+// const productService = {
+//   getProducts: async (page = 1, limit = 8) => {
+//     try {
+//       // Test with fetch first
+//       const response = await fetch(`http://localhost/api/products?page=${page}&limit=${limit}`);
+//       const data = await response.json();
+//       console.log('Fetch test data:', data);
+//       return data;
+//     } catch (error) {
+//       console.error('Fetch test error:', error);
+//       throw error;
+//     }
+//   },
+//   // ... other methods
+// };
+// export default productService;

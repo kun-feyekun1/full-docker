@@ -42,6 +42,11 @@ apiClient.interceptors.response.use(
       case 400:
         console.warn('Bad Request:', data.message || data);
         break;
+      case 401:
+        console.warn('Unauthorized — clearing session');
+        localStorage.clear();
+        window.location.href = '/login';
+        break;
       case 403:
         console.warn('Forbidden');
         break;

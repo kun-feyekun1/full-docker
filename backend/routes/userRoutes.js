@@ -14,7 +14,7 @@ const { authMiddleware } = require('../middleware/authMiddleware');
 router.get('/',authMiddleware, getUsers);  
 router.get('/profile', authMiddleware, getProfile)
 router.get('/:id', authMiddleware, getUserById);  
-router.put('/:id', joiValidateSchema(userUpdateSchema), updateUser);
+router.put('/:id', authMiddleware, joiValidateSchema(userUpdateSchema), updateUser);
 router.delete('/deleteAllUsers', authMiddleware, deleteAllUsers); 
 router.delete('/:id', authMiddleware, deleteUserById); 
 

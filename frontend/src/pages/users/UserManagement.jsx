@@ -20,7 +20,7 @@ const UserManagement = () => {
   });
 
   // User management functions
-  const fetchUsers = async (page = 1, limit = 12) => {
+  const fetchUsers = async (page = 1, limit = 10) => {
     try {
       setLoading(true);
       const data = await userService.fetchUsers(page, limit);

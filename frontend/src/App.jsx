@@ -16,6 +16,7 @@ import AboutUs from "./pages/About/AboutUs";
 import Features from "./pages/features/Features";
 import Auths from "./pages/auth/Auths";
 import Footer from "./components/Footer";
+import Profile from "./pages/users/Profile"
 
 import Privacy from "./pages/policies/Privacy";
 import Terms from "./pages/policies/Terms";
@@ -44,6 +45,7 @@ function App() {
               <Route path="/AboutUs" element={<AboutUs />} />
               <Route path="/Features" element={<Features />} />
               <Route path="/Auths" element={<Auths />} />
+              <Route path="/Profile" element={<Profile />} />
               {/* <Route path="/dashboard" element={<Dashboard />} /> */}
               {/* <Route path="/login" element={<Login />} /> */}
               <Route path="/" element={<Home />} />

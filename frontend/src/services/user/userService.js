@@ -23,8 +23,8 @@ const userService = {
     return response.data;
   },
 
-  updateProfile: async (id, updateData) => {
-    const response = await apiClient.put(`/users/${id}`, updateData);
+  updateProfile: async (updateData) => {
+    const response = await apiClient.put('/users/profile', updateData);
     return response.data;
   },
 

@@ -37,10 +37,10 @@ const UserManagement = () => {
     try {
       setLoading(true);
       const data = await userService.fetchUserById(id);
-      setSelectedUser(data);
+      setSelectedUser(data.data);
       setUserForm({
-        name: data.name,
-        email: data.email,
+        name: data.data.name,
+        email: data.data.email,
         password: "",
       });
       setActiveTab("edit");
@@ -55,7 +55,7 @@ const UserManagement = () => {
     try {
       setLoading(true);
       const data = await userService.fetchProfile();
-      setCurrentUser(data);
+      setCurrentUser(data.data);
     } catch (error) {
       showMessage("error", "Failed to fetch profile");
     } finally {
@@ -111,7 +111,7 @@ const UserManagement = () => {
         updateData.password = userForm.password;
       }
 
-      const data = await userService.updateProfile(currentUser.id, updateData);
+      const data = await userService.updateProfile(updateData);
 
       showMessage("success", "Profile updated successfully!");
       setCurrentUser(data);

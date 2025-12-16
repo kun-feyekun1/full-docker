@@ -132,3 +132,8 @@ export const AuthProvider = ({ children }) => {
 
 // Hook
 export const useAuth = () => useContext(AuthContext);
+
+
+// docker exec -it agrimon_nginx sh 
+// / # cat /etc/nginx/nginx.conf
+

@@ -25,8 +25,11 @@ async function mongoSeeder() {
   try {
     await connectToMongoDB();
 
-    await Notification.deleteMany({});
-    console.log('Old notifications cleared');
+    const count = await Notification.countDocuments();
+    if (count > 0) {
+      console.log('MongoDB already seeded. Skipping...');
+      process.exit(0);
+    }
 
     // Generate notifications
     const notifications = await generateNotifications(50);

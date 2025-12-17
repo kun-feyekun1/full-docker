@@ -99,9 +99,15 @@ function generateOrders(users, products, num = 100) {
 
 async function seedPostgres() {
   try {
-    // Sync tables (drops and recreates)
-    await sequelize.sync({ force: true });
-    console.log('Tables synced');
+
+    await sequelize.sync();
+    console.log('Tables synced (safe)');
+
+    const count = await User.count();
+    if (count > 0) {
+      console.log('Database already seeded. Skipping...');
+      process.exit(0);
+    }
 
     // Seed Users
     const usersData = await generateUsers(50);

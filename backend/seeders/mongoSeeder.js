@@ -28,7 +28,6 @@ async function mongoSeeder() {
     const count = await Notification.countDocuments();
     if (count > 0) {
       console.log('MongoDB already seeded. Skipping...');
-      process.exit(0);
     }
 
     // Generate notifications

@@ -1,16 +1,40 @@
-# React + Vite
+# AgriConnect - Agricultural Market Linkage Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive web-based platform connecting helps in tracking the sellers orders and products
 
-Currently, two official plugins are available:
+## Technology Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- React.js with Hooks 
+- TailwindCSS for styling
+- Framer Motion & React Spring for animations
+- GSAP for advanced animations
+- Axios for API calls
 
-## React Compiler
+### Backend
+- Node.js with Express.js
+- JWT authentication
+- bcrypt for password hashing
+- PostgreSQL with Sequelize ORM
+- MongoDB with Mongoose ODM
+- Redis for caching
+- Nodemailer for emails
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup Instructions
 
-## Expanding the ESLint configuration
+1. git clone 
+2. copy the 3 .env.example to .env (command: copy .env.example .env )
+3. put your credentials
+4. docker compose up --build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+It should automatically seed the mongo and postgre dbs
+
+Open in browser 
+sign up and then sign in to see more functionalites
+
+lasty to remove the volumes execute: -> docker volume rm pgdata mongo_data ,or
+
+docker compose down -v
+
+
+

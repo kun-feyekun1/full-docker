@@ -3,6 +3,7 @@
 require('dotenv').config();
 const app = require('./App');
 const connectToMongoDB = require('./config/mong');
+const runSeeders = require('./seeders/runSeeders');
 const { sequelize } = require('./models');
 
 const PORT = process.env.PORT || 3000;
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 3000;
 
     await connectToMongoDB();
     console.log('MongoDB connected successfully!');
+
+    runSeeders();
 
     const server = app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);

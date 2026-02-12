@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^5.2.2",
     "@mui/icons-material": "^7.3.6",
     "@mui/material": "^7.3.6",
     "@react-spring/web": "^10.0.3",
@@ -23,8 +24,10 @@
     "lucide-react": "^0.554.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-hook-form": "^7.71.1",
     "react-router-dom": "^6.8.0",
-    "tailwindcss": "^4.1.17"
+    "tailwindcss": "^4.1.17",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

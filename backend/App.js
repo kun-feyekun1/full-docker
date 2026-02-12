@@ -7,7 +7,7 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
 //config imports
-const corsOptions = require("./config/corsOptions");
+// const corsOptions = require("./config/corsOptions");
 
 //Import Routes
 const authRoutes = require("./routes/authRoutes");
@@ -23,7 +23,7 @@ const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
 app.use(helmet());
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(
   rateLimit({

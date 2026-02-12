@@ -1,11 +1,11 @@
 
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_BASE_URL = '/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 15000,
+  timeout: 10_000,
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
@@ -41,6 +41,11 @@ apiClient.interceptors.response.use(
     switch (status) {
       case 400:
         console.warn('Bad Request:', data.message || data);
+        break;
+      case 401:
+        console.warn('Unauthorized — clearing session');
+        localStorage.clear();
+        window.location.href = '/login';
         break;
       case 403:
         console.warn('Forbidden');

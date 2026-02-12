@@ -29,7 +29,12 @@ A comprehensive web-based platform connecting helps in tracking the sellers orde
 
 It should automatically seed the mongo and postgre dbs
 
-Then npm install to the frontend 
-then npm run dev
-
 Open in browser 
+sign up and then sign in to see more functionalites
+
+lasty to remove the volumes execute: -> docker volume rm pgdata mongo_data ,or
+
+docker compose down -v
+
+
+

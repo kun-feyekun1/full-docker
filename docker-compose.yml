@@ -48,28 +48,17 @@ services:
       - postgres
     command: sh -c "node seeders/runSeeders.js && npm start"
 
-  # Frontend
-  frontend:
-    build: ./frontend
-    container_name: agrimon_frontend
-    restart: unless-stopped
-    ports:
-      - "5173:80"
-
-  # ------------------------------
-  # ✅ Added Nginx (ONLY new part)
-  # ------------------------------
+  # Nginx (serves frontend + proxies API)
   nginx:
-    image: nginx:latest
+    build:
+      context: ./frontend
+      dockerfile: dockerfile
     container_name: agrimon_nginx
-    restart: unless-stopped
     ports:
-      - "80:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - "80:80"  # Serve frontend and proxy backend API
     depends_on:
-      - frontend
       - backend
+
 
 volumes:
   mongo_data:

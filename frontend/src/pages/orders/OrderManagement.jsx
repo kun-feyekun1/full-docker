@@ -30,9 +30,9 @@ const OrderManagement = () => {
     const loadProducts = async () => {
       try {
         const products = await orderService.getProducts();
-        setAvailableProducts(products);
+        setAvailableProducts(products.data);
       } catch (error) {
-        console.error("Failed to fetch products", error);
+        console.error("Failed to fetch productsdd", error);
       }
     };
     loadProducts();
@@ -65,7 +65,8 @@ const OrderManagement = () => {
       setLoading(false);
     }
   };
-
+  
+  //create new order
   const createNewOrder = async (e) => {
     e.preventDefault();
     try {

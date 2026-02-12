@@ -20,7 +20,7 @@ const UserManagement = () => {
   });
 
   // User management functions
-  const fetchUsers = async (page = 1, limit = 12) => {
+  const fetchUsers = async (page = 1, limit = 10) => {
     try {
       setLoading(true);
       const data = await userService.fetchUsers(page, limit);
@@ -37,10 +37,10 @@ const UserManagement = () => {
     try {
       setLoading(true);
       const data = await userService.fetchUserById(id);
-      setSelectedUser(data);
+      setSelectedUser(data.data);
       setUserForm({
-        name: data.name,
-        email: data.email,
+        name: data.data.name,
+        email: data.data.email,
         password: "",
       });
       setActiveTab("edit");
@@ -111,7 +111,7 @@ const UserManagement = () => {
         updateData.password = userForm.password;
       }
 
-      const data = await userService.updateProfile(currentUser.id, updateData);
+      const data = await userService.updateProfile(updateData);
 
       showMessage("success", "Profile updated successfully!");
       setCurrentUser(data);
@@ -525,6 +525,12 @@ const UserManagement = () => {
           )}
 
           {/* Profile Tab */}
+          {activeTab === "profile" && loading && (
+            <p className="text-center text-gray-500">Loading profile...</p>
+          )}
+          {activeTab === "profile" && !loading && !currentUser && (
+            <p className="text-center text-red-500">Failed to load profile</p>
+          )}
           {activeTab === "profile" && currentUser && (
             <div className="space-y-6">
               <div className="flex justify-between items-center">
